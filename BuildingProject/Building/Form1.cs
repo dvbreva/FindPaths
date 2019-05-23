@@ -65,6 +65,47 @@ namespace Building
                 }
             }
 
+            foreach(var item in RoomsList)
+            {
+                Room room = new Room(item[0], int.Parse(item[1]), int.Parse(item[2]), int.Parse(item[3]), item[4]);
+                Builder.Floor.AddRoom(room);
+                checkedListBoxFrom.Items.Add(room.Name);
+                checkedListBoxTo.Items.Add(room.Name);
+            }
+
+            foreach(var item in LinksList)
+            {
+                Link link = new Link(item[1], item[2], int.Parse(item[3]), (item[4].ToString().Contains("yes")) ? true : false);
+                Room room = new Room();
+                Builder.Floor.Rooms.TryGetValue(item[0], out room);
+
+                if(room != null && !room.Links.Contains(link))
+                {
+                    room.Links.Add(link);
+                }
+
+                listBox1.Items.Add($"From: {room.Name} To: {link.To}  {link.LinkType.ToUpper()}");
+
+                // a check for bidirectional rooms 
+                // 
+                if(link.Bidirectional == true)
+                {
+                    Room anotherRoom = new Room();
+                    foreach(var r in Builder.Floor.Rooms)
+                    {
+                        if(r.Key == link.To)
+                        {
+                            Link LinkToFrom = new Link(room.Name, link.LinkType, link.Cost, link.Bidirectional);
+
+                            if (!r.Value.Links.Contains(LinkToFrom) && LinkToFrom.To != r.Key)
+                                r.Value.Links.Add(LinkToFrom);
+
+                            listBox1.Items.Add($"From: {r.Value.Name}  To: {room.Name}  {LinkToFrom.LinkType.ToUpper()}");
+                        }
+                    }
+                }
+            }
+
             sr.Close();
         }
 

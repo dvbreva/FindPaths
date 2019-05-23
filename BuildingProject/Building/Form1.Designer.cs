@@ -80,15 +80,15 @@
             this.checkedListBoxFrom.FormattingEnabled = true;
             this.checkedListBoxFrom.Location = new System.Drawing.Point(43, 133);
             this.checkedListBoxFrom.Name = "checkedListBoxFrom";
-            this.checkedListBoxFrom.Size = new System.Drawing.Size(132, 139);
+            this.checkedListBoxFrom.Size = new System.Drawing.Size(101, 139);
             this.checkedListBoxFrom.TabIndex = 3;
             // 
             // checkedListBoxTo
             // 
             this.checkedListBoxTo.FormattingEnabled = true;
-            this.checkedListBoxTo.Location = new System.Drawing.Point(193, 133);
+            this.checkedListBoxTo.Location = new System.Drawing.Point(173, 133);
             this.checkedListBoxTo.Name = "checkedListBoxTo";
-            this.checkedListBoxTo.Size = new System.Drawing.Size(132, 139);
+            this.checkedListBoxTo.Size = new System.Drawing.Size(101, 139);
             this.checkedListBoxTo.TabIndex = 4;
             // 
             // labelFrom
@@ -103,7 +103,7 @@
             // labelTo
             // 
             this.labelTo.AutoSize = true;
-            this.labelTo.Location = new System.Drawing.Point(190, 110);
+            this.labelTo.Location = new System.Drawing.Point(170, 110);
             this.labelTo.Name = "labelTo";
             this.labelTo.Size = new System.Drawing.Size(20, 13);
             this.labelTo.TabIndex = 6;
@@ -129,7 +129,7 @@
             // linksLabel
             // 
             this.linksLabel.AutoSize = true;
-            this.linksLabel.Location = new System.Drawing.Point(341, 110);
+            this.linksLabel.Location = new System.Drawing.Point(314, 110);
             this.linksLabel.Name = "linksLabel";
             this.linksLabel.Size = new System.Drawing.Size(32, 13);
             this.linksLabel.TabIndex = 10;
@@ -168,9 +168,9 @@
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(344, 138);
+            this.listBox1.Location = new System.Drawing.Point(306, 133);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(132, 134);
+            this.listBox1.Size = new System.Drawing.Size(199, 134);
             this.listBox1.TabIndex = 14;
             // 
             // richTextBox2
@@ -202,7 +202,7 @@
             this.Controls.Add(this.fileImportButton);
             this.Controls.Add(this.FileTextBox);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Building Paths";
             this.ResumeLayout(false);
             this.PerformLayout();
 
