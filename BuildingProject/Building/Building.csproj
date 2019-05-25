@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BuildingAlgorithms\NoStairs.cs" />
     <Compile Include="BuildingUtils\BuildingBuilder.cs" />
     <Compile Include="BuildingUtils\Floor.cs" />
     <Compile Include="BuildingUtils\Link.cs" />
@@ -83,8 +84,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BuildingAlgorithms\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

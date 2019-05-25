@@ -13,6 +13,8 @@ namespace Building.BuildingUtils
         public List<Link> Links { get; set; }
 
         public Room RoomParent { get; set; }
+        public bool isTested = false;
+        public bool isExpanded = false;
 
         public Room()
         {

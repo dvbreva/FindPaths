@@ -80,15 +80,15 @@
             this.checkedListBoxFrom.FormattingEnabled = true;
             this.checkedListBoxFrom.Location = new System.Drawing.Point(43, 133);
             this.checkedListBoxFrom.Name = "checkedListBoxFrom";
-            this.checkedListBoxFrom.Size = new System.Drawing.Size(101, 139);
+            this.checkedListBoxFrom.Size = new System.Drawing.Size(83, 139);
             this.checkedListBoxFrom.TabIndex = 3;
             // 
             // checkedListBoxTo
             // 
             this.checkedListBoxTo.FormattingEnabled = true;
-            this.checkedListBoxTo.Location = new System.Drawing.Point(173, 133);
+            this.checkedListBoxTo.Location = new System.Drawing.Point(153, 133);
             this.checkedListBoxTo.Name = "checkedListBoxTo";
-            this.checkedListBoxTo.Size = new System.Drawing.Size(101, 139);
+            this.checkedListBoxTo.Size = new System.Drawing.Size(83, 139);
             this.checkedListBoxTo.TabIndex = 4;
             // 
             // labelFrom
@@ -103,7 +103,7 @@
             // labelTo
             // 
             this.labelTo.AutoSize = true;
-            this.labelTo.Location = new System.Drawing.Point(170, 110);
+            this.labelTo.Location = new System.Drawing.Point(150, 110);
             this.labelTo.Name = "labelTo";
             this.labelTo.Size = new System.Drawing.Size(20, 13);
             this.labelTo.TabIndex = 6;
@@ -114,9 +114,9 @@
             this.labelPaths.AutoSize = true;
             this.labelPaths.Location = new System.Drawing.Point(42, 292);
             this.labelPaths.Name = "labelPaths";
-            this.labelPaths.Size = new System.Drawing.Size(64, 13);
+            this.labelPaths.Size = new System.Drawing.Size(48, 13);
             this.labelPaths.TabIndex = 7;
-            this.labelPaths.Text = "Paths found";
+            this.labelPaths.Text = "Progress";
             // 
             // richTextBox1
             // 
@@ -129,7 +129,7 @@
             // linksLabel
             // 
             this.linksLabel.AutoSize = true;
-            this.linksLabel.Location = new System.Drawing.Point(314, 110);
+            this.linksLabel.Location = new System.Drawing.Point(265, 110);
             this.linksLabel.Name = "linksLabel";
             this.linksLabel.Size = new System.Drawing.Size(32, 13);
             this.linksLabel.TabIndex = 10;
@@ -144,6 +144,7 @@
             this.button1stAlgorithm.TabIndex = 11;
             this.button1stAlgorithm.Text = "1st algorithm";
             this.button1stAlgorithm.UseVisualStyleBackColor = true;
+            this.button1stAlgorithm.Click += new System.EventHandler(this.button1stAlgorithm_Click);
             // 
             // button2ndAlgorithm
             // 
@@ -154,6 +155,7 @@
             this.button2ndAlgorithm.TabIndex = 12;
             this.button2ndAlgorithm.Text = "2nd algorithm";
             this.button2ndAlgorithm.UseVisualStyleBackColor = true;
+            this.button2ndAlgorithm.Click += new System.EventHandler(this.button2ndAlgorithm_Click);
             // 
             // button3rdAlgorithm
             // 
@@ -164,13 +166,14 @@
             this.button3rdAlgorithm.TabIndex = 13;
             this.button3rdAlgorithm.Text = "3rd algorithm";
             this.button3rdAlgorithm.UseVisualStyleBackColor = true;
+            this.button3rdAlgorithm.Click += new System.EventHandler(this.button3rdAlgorithm_Click);
             // 
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(306, 133);
+            this.listBox1.Location = new System.Drawing.Point(268, 133);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(199, 134);
+            this.listBox1.Size = new System.Drawing.Size(237, 134);
             this.listBox1.TabIndex = 14;
             // 
             // richTextBox2
@@ -185,7 +188,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(734, 450);
+            this.ClientSize = new System.Drawing.Size(711, 450);
             this.Controls.Add(this.richTextBox2);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.button3rdAlgorithm);

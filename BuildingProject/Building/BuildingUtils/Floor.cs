@@ -52,5 +52,28 @@ namespace Building.BuildingUtils
 
             return LinkedRooms;
         }
+
+        public List<Room> getLrWoStairs(string from)
+        {
+            List<Room> linked = new List<Room>();
+            Room root = new Room();
+            Rooms.TryGetValue(from, out root);
+
+            foreach (var link in root.Links)
+            {
+                if (link.LinkType == "climb")
+                    continue;
+
+                foreach (var ro in Rooms)
+                {
+                    if (ro.Key.Equals(link.To))
+                    {
+                        ro.Value.RoomParent = (ro.Value.RoomParent == null) ? root : ro.Value.RoomParent;
+                        linked.Add(ro.Value);
+                    }
+                }
+            }
+            return linked;
+        }
     }
 }

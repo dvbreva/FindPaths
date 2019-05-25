@@ -1,4 +1,5 @@
-﻿using Building.BuildingUtils;
+﻿using Building.BuildingAlgorithms;
+using Building.BuildingUtils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -84,7 +85,7 @@ namespace Building
                     room.Links.Add(link);
                 }
 
-                listBox1.Items.Add($"From: {room.Name} To: {link.To}  {link.LinkType.ToUpper()}");
+                listBox1.Items.Add($"From: {room.Name} > To: {link.To} / Type: {link.LinkType} / Cost: {link.Cost}");
 
                 // a check for bidirectional rooms 
                 // 
@@ -100,7 +101,7 @@ namespace Building
                             if (!r.Value.Links.Contains(LinkToFrom) && LinkToFrom.To != r.Key)
                                 r.Value.Links.Add(LinkToFrom);
 
-                            listBox1.Items.Add($"From: {r.Value.Name}  To: {room.Name}  {LinkToFrom.LinkType.ToUpper()}");
+                            listBox1.Items.Add($"From: {r.Value.Name} > To: {room.Name} / Type: {LinkToFrom.LinkType} / Cost: {LinkToFrom.Cost}");
                         }
                     }
                 }
@@ -109,7 +110,25 @@ namespace Building
             sr.Close();
         }
 
+        // buttons for algorithms 
+        private void button1stAlgorithm_Click(object sender, EventArgs e)
+        {
+            // to do
+            string from = checkedListBoxFrom.SelectedItem.ToString();
+            string to = checkedListBoxTo.SelectedItem.ToString();
+            richTextBox1.Text = Builder.NoStairsPath(from, to);
+            richTextBox2.Text = Builder.Result;
+        }
 
+        private void button2ndAlgorithm_Click(object sender, EventArgs e)
+        {
+            // to do
+        }
+
+        private void button3rdAlgorithm_Click(object sender, EventArgs e)
+        {
+            // to do
+        }
     }
 }
 
