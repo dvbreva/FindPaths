@@ -46,7 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BuildingAlgorithms\NoStairs.cs" />
     <Compile Include="BuildingUtils\BuildingBuilder.cs" />
     <Compile Include="BuildingUtils\Floor.cs" />
     <Compile Include="BuildingUtils\Link.cs" />

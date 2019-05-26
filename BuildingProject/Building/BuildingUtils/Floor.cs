@@ -30,50 +30,54 @@ namespace Building.BuildingUtils
             Room BaseRoom = new Room();
             Rooms.TryGetValue(from, out BaseRoom);
 
-            foreach(var link in BaseRoom.Links)
+            foreach (var link in BaseRoom.Links)
             {
-                Room room = new Room();
-                Rooms.TryGetValue(link.To, out room);
-                foreach(var r in Rooms)
+                Room r = new Room();
+                Rooms.TryGetValue(link.To, out r);
+                foreach (var room in Rooms)
                 {
-                    if (r.Key.Equals(link.To))
+                    if (room.Key.Equals(link.To))
                     {
-                        if(r.Value.RoomParent == null)
-                        {
-                            r.Value.RoomParent = BaseRoom;
-                        }
-                        else
-                        {
-                            r.Value.RoomParent = r.Value.RoomParent;
-                        }
+                        room.Value.RoomParent = (room.Value.RoomParent == null) ? BaseRoom : room.Value.RoomParent;
+                        LinkedRooms.Add(room.Value);
                     }
                 }
             }
-
             return LinkedRooms;
         }
 
-        public List<Room> getLrWoStairs(string from)
+        // getting a list with all the rooms that have climb link 
+        public List<Room> GetLinkedRoomsWithoutStairs(string from)
         {
-            List<Room> linked = new List<Room>();
-            Room root = new Room();
-            Rooms.TryGetValue(from, out root);
+            List<Room> LinkedRooms = new List<Room>();
+            
+            Room BaseRoom = new Room();
+            Rooms.TryGetValue(from, out BaseRoom);
 
-            foreach (var link in root.Links)
+            foreach (var link in BaseRoom.Links)
             {
                 if (link.LinkType == "climb")
-                    continue;
-
-                foreach (var ro in Rooms)
                 {
-                    if (ro.Key.Equals(link.To))
-                    {
-                        ro.Value.RoomParent = (ro.Value.RoomParent == null) ? root : ro.Value.RoomParent;
-                        linked.Add(ro.Value);
+                    continue;
+                }
+
+                foreach (var item in Rooms)
+                {
+                    if (item.Key.Equals(link.To))
+                    { 
+                        if(item.Value.RoomParent == null)
+                        {
+                            item.Value.RoomParent = BaseRoom;
+                        }
+                        else
+                        {
+                            item.Value.RoomParent = item.Value.RoomParent;
+                        }
+                        LinkedRooms.Add(item.Value);
                     }
                 }
             }
-            return linked;
+            return LinkedRooms;
         }
     }
 }

@@ -43,6 +43,7 @@
             this.button3rdAlgorithm = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.clearButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // FileTextBox
@@ -184,11 +185,23 @@
             this.richTextBox2.TabIndex = 15;
             this.richTextBox2.Text = "";
             // 
+            // clearButton
+            // 
+            this.clearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.clearButton.Location = new System.Drawing.Point(548, 433);
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(106, 31);
+            this.clearButton.TabIndex = 16;
+            this.clearButton.Text = "clear";
+            this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(711, 450);
+            this.ClientSize = new System.Drawing.Size(711, 468);
+            this.Controls.Add(this.clearButton);
             this.Controls.Add(this.richTextBox2);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.button3rdAlgorithm);
@@ -228,6 +241,7 @@
         private System.Windows.Forms.Button button3rdAlgorithm;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.Button clearButton;
     }
 }
 

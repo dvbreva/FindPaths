@@ -1,5 +1,4 @@
-﻿using Building.BuildingAlgorithms;
-using Building.BuildingUtils;
+﻿using Building.BuildingUtils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -112,8 +111,7 @@ namespace Building
 
         // buttons for algorithms 
         private void button1stAlgorithm_Click(object sender, EventArgs e)
-        {
-            // to do
+        { 
             string from = checkedListBoxFrom.SelectedItem.ToString();
             string to = checkedListBoxTo.SelectedItem.ToString();
             richTextBox1.Text = Builder.NoStairsPath(from, to);
@@ -127,7 +125,26 @@ namespace Building
 
         private void button3rdAlgorithm_Click(object sender, EventArgs e)
         {
-            // to do
+            string from = checkedListBoxFrom.SelectedItem.ToString();
+            string to = checkedListBoxTo.SelectedItem.ToString();
+            richTextBox1.Text = Builder.NoStairsPath(from, to);
+            if(Builder.Result == $"No path without stairs from {from} to {to} found.\nTry another way.")
+            {
+                Builder.Result = "";
+                richTextBox1.Text = Builder.FindPathWithLift(from, to);
+            }
+            richTextBox2.Text = Builder.Result;
+
+        }
+
+        private void clearButton_Click(object sender, EventArgs e)
+        { 
+            checkedListBoxFrom.SetItemChecked(checkedListBoxFrom.SelectedIndex,false);
+            checkedListBoxFrom.SelectedItem = null;
+            checkedListBoxTo.SetItemChecked(checkedListBoxTo.SelectedIndex, false);
+            checkedListBoxTo.SelectedItem = null;
+            richTextBox1.Text = "";
+            richTextBox2.Text = "";
         }
     }
 }
