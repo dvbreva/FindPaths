@@ -214,6 +214,139 @@ namespace Building.BuildingUtils
         }
 
         // todo : algorithm with least walking effort
+        public string FindPathWithLeastSteps(string f, string t)
+        {
+            string ResultPath = "";
+            string SearchedPath = "Rooms that are going to be checked: \n";
+
+            List<Room> queue = new List<Room>();
+            List<Room> actualPath = new List<Room>();
+
+            ClearFields();
+            SetRooms(f, t);
+            queue.Add(From);
+
+            Room tempRoom = new Room();
+
+            while(queue.Count != 0)
+            {
+                tempRoom = queue.First<Room>();
+                actualPath.Add(tempRoom);
+
+                if (tempRoom.Links.Count != 0)
+                {
+                    SearchedPath += $" > {tempRoom.Name} which has link to:";
+                }
+                else
+                {
+                    SearchedPath += $" > {tempRoom.Name} \n ";
+                }
+
+                foreach (var item in tempRoom.Links)
+                {
+                    // display the rooms linked to our temp room
+                    SearchedPath += $" {item.To},";
+                }
+                SearchedPath = SearchedPath.TrimEnd(',');
+                SearchedPath += " \n\n";
+
+
+
+                if (tempRoom.Name == t)
+                {
+                    Result += "I found path! \n\n";
+
+                    while(tempRoom.RoomParent.Name != f)
+                    {
+                        if(actualPath.Count == 15)
+                        {
+                            break;
+                        }
+                        actualPath.Add(tempRoom.RoomParent);
+                        tempRoom = tempRoom.RoomParent;
+                        if(tempRoom == null)
+                        {
+                            break;
+                        }
+                    }
+
+                    actualPath.Add(tempRoom.RoomParent);
+                    actualPath.Reverse();
+
+                  //  Result += $" {actualPath.ElementAt(0).Name} > ";
+
+                    foreach(var currentItem in actualPath)
+                    {
+                        if (actualPath.ElementAt(0) == currentItem)
+                        {
+                            continue;
+                        }
+                        Link tempLink = currentItem.RoomParent.Links.Find(x => x.To == currentItem.Name);
+                        int cost = 0;
+                        cost += tempLink.Cost;
+
+                        var linkType = currentItem.Links.Find(x => x.To.Equals(currentItem.RoomParent.Name)).LinkType;
+
+                        if (!AlreadyUsedLinks.Keys.Contains(tempLink.LinkType))
+                        {
+                            AlreadyUsedLinks.Add(tempLink.LinkType, 1);
+                        }
+                        else
+                        {
+                            AlreadyUsedLinks[tempLink.LinkType] += 1;
+                        }
+
+                        Result += $" Path Details. \n\n" +
+                           $"{actualPath.ElementAt(0).Name} -> {linkType} ({tempLink.Cost}) -> {currentItem.Name}";
+
+                        if(currentItem.Name == t)
+                        {
+                            Result += $"\n\nCost: {cost} \n";
+                            Result += $"Links used: ";
+                            foreach(var l in AlreadyUsedLinks)
+                            {
+                                Result += $"\n {l.Key} x {l.Value} time/times";
+                            }
+                            break;
+                        }
+                    }
+                    return SearchedPath;
+                }
+                // if current room is the destination room
+                if(Floor.GetLinkedRooms(tempRoom.Name).Count != 0)
+                {
+                    foreach(Room linked in Floor.GetLinkedRooms(tempRoom.Name))
+                    {
+                        if(!linked.isTested && !queue.Contains(linked))
+                        {
+                            linked.Distance = Floor.CalculateDistance(linked.Name, To.Name);
+                            queue.Add(linked);
+                        }
+                    }
+                    queue.OrderBy(x => x.Distance);
+                    if(queue.Count != 0)
+                    {
+                        SearchedPath += $" Distance to room {queue.First<Room>().Name} = {queue.First<Room>().Distance} \n";
+                      
+                    }
+                    tempRoom.isExpanded = true;
+                }
+
+                if(!tempRoom.Floor.Equals(To.Floor) && tempRoom.RoomType == "transit" && Floor.GetLinkedRooms(tempRoom.Name).Find(x => x.Floor == To.Floor) != null)
+                {
+                    tempRoom.isTested = true;
+                    queue.Clear();
+                    queue.Add(Floor.GetLinkedRooms(tempRoom.Name).Find(x => x.Floor == To.Floor));
+                }
+                else
+                {
+                    tempRoom.isTested = true;
+                    queue.Remove(queue.First<Room>()); 
+                }
+            }
+            Result = "I couldn't find the shortest razstoqnie between these two.";
+            return SearchedPath;
+        }
 
         // todo : algorithm with lift priority and doubled cost in case of climb 
         public string FindPathWithLift(string f, string t)

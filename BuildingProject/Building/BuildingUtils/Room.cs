@@ -15,6 +15,7 @@ namespace Building.BuildingUtils
         public Room RoomParent { get; set; }
         public bool isTested = false;
         public bool isExpanded = false;
+        public double Distance;
 
         public Room()
         {

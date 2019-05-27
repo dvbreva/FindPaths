@@ -121,9 +121,9 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(45, 308);
+            this.richTextBox1.Location = new System.Drawing.Point(43, 315);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(294, 119);
+            this.richTextBox1.Size = new System.Drawing.Size(280, 119);
             this.richTextBox1.TabIndex = 8;
             this.richTextBox1.Text = "";
             // 
@@ -139,7 +139,7 @@
             // button1stAlgorithm
             // 
             this.button1stAlgorithm.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1stAlgorithm.Location = new System.Drawing.Point(522, 123);
+            this.button1stAlgorithm.Location = new System.Drawing.Point(522, 121);
             this.button1stAlgorithm.Name = "button1stAlgorithm";
             this.button1stAlgorithm.Size = new System.Drawing.Size(154, 44);
             this.button1stAlgorithm.TabIndex = 11;
@@ -150,7 +150,7 @@
             // button2ndAlgorithm
             // 
             this.button2ndAlgorithm.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2ndAlgorithm.Location = new System.Drawing.Point(522, 173);
+            this.button2ndAlgorithm.Location = new System.Drawing.Point(522, 181);
             this.button2ndAlgorithm.Name = "button2ndAlgorithm";
             this.button2ndAlgorithm.Size = new System.Drawing.Size(154, 44);
             this.button2ndAlgorithm.TabIndex = 12;
@@ -161,7 +161,7 @@
             // button3rdAlgorithm
             // 
             this.button3rdAlgorithm.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3rdAlgorithm.Location = new System.Drawing.Point(522, 223);
+            this.button3rdAlgorithm.Location = new System.Drawing.Point(522, 240);
             this.button3rdAlgorithm.Name = "button3rdAlgorithm";
             this.button3rdAlgorithm.Size = new System.Drawing.Size(154, 44);
             this.button3rdAlgorithm.TabIndex = 13;
@@ -179,16 +179,16 @@
             // 
             // richTextBox2
             // 
-            this.richTextBox2.Location = new System.Drawing.Point(360, 308);
+            this.richTextBox2.Location = new System.Drawing.Point(329, 315);
             this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(294, 119);
+            this.richTextBox2.Size = new System.Drawing.Size(347, 119);
             this.richTextBox2.TabIndex = 15;
             this.richTextBox2.Text = "";
             // 
             // clearButton
             // 
             this.clearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.clearButton.Location = new System.Drawing.Point(548, 433);
+            this.clearButton.Location = new System.Drawing.Point(570, 440);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(106, 31);
             this.clearButton.TabIndex = 16;
@@ -200,7 +200,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(711, 468);
+            this.ClientSize = new System.Drawing.Size(711, 483);
             this.Controls.Add(this.clearButton);
             this.Controls.Add(this.richTextBox2);
             this.Controls.Add(this.listBox1);
@@ -217,8 +217,10 @@
             this.Controls.Add(this.buttonReadFile);
             this.Controls.Add(this.fileImportButton);
             this.Controls.Add(this.FileTextBox);
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Building Paths";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

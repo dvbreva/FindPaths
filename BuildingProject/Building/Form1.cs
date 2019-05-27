@@ -120,7 +120,10 @@ namespace Building
 
         private void button2ndAlgorithm_Click(object sender, EventArgs e)
         {
-            // to do
+            string from = checkedListBoxFrom.SelectedItem.ToString();
+            string to = checkedListBoxTo.SelectedItem.ToString();
+            richTextBox1.Text = Builder.FindPathWithLeastSteps(from, to);
+            richTextBox2.Text = Builder.Result;
         }
 
         private void button3rdAlgorithm_Click(object sender, EventArgs e)
@@ -145,6 +148,12 @@ namespace Building
             checkedListBoxTo.SelectedItem = null;
             richTextBox1.Text = "";
             richTextBox2.Text = "";
+            Builder.Result = "";
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
