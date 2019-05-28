@@ -135,7 +135,7 @@ namespace Building.BuildingUtils
                     actualPath.Add(tempRoom.RoomParent);
                     actualPath.Reverse(); // reverse temproom with its parent 
 
-                    ResultPath += $"Your first selected Room is: \nRoom {actualPath.ElementAt(0).Name}";
+                    Result += $"Your first selected Room is: \nRoom {actualPath.ElementAt(0).Name} \n";
 
                     foreach (var currentItem in actualPath)
                     {
@@ -179,8 +179,7 @@ namespace Building.BuildingUtils
                             AlreadyUsedLinks[tempLink.LinkType] += 1;
                         }
 
-                        Result += $" Path Details. \n\n" +
-                            $"{actualPath.ElementAt(0).Name}-> {type} (cost: {newCost}) -> {currentItem.Name}";
+                        Result += $" -> {type} (cost: {newCost}) -> {currentItem.Name}";
 
                         if (currentItem.Name == t)
                         {
@@ -193,7 +192,7 @@ namespace Building.BuildingUtils
                             break;
                         }
                     }
-                    return ResultPath;
+                    return SearchedPath;
                 }
 
                 //if there are links to the current room
@@ -228,7 +227,9 @@ namespace Building.BuildingUtils
 
             Room tempRoom = new Room();
 
-            while(queue.Count != 0)
+            int cost = 0;
+
+            while (queue.Count != 0)
             {
                 tempRoom = queue.First<Room>();
                 actualPath.Add(tempRoom);
@@ -258,10 +259,10 @@ namespace Building.BuildingUtils
 
                     while(tempRoom.RoomParent.Name != f)
                     {
-                        if(actualPath.Count == 15)
+                       /* if(actualPath.Count == 15)
                         {
                             break;
-                        }
+                        } */
                         actualPath.Add(tempRoom.RoomParent);
                         tempRoom = tempRoom.RoomParent;
                         if(tempRoom == null)
@@ -282,7 +283,7 @@ namespace Building.BuildingUtils
                             continue;
                         }
                         Link tempLink = currentItem.RoomParent.Links.Find(x => x.To == currentItem.Name);
-                        int cost = 0;
+                      
                         cost += tempLink.Cost;
 
                         var linkType = currentItem.Links.Find(x => x.To.Equals(currentItem.RoomParent.Name)).LinkType;
@@ -296,8 +297,7 @@ namespace Building.BuildingUtils
                             AlreadyUsedLinks[tempLink.LinkType] += 1;
                         }
 
-                        Result += $" Path Details. \n\n" +
-                           $"{actualPath.ElementAt(0).Name} -> {linkType} ({tempLink.Cost}) -> {currentItem.Name}";
+                        Result += $" -> {linkType} ({tempLink.Cost}) -> {currentItem.Name}";
 
                         if(currentItem.Name == t)
                         {
@@ -344,7 +344,7 @@ namespace Building.BuildingUtils
                     queue.Remove(queue.First<Room>()); 
                 }
             }
-            Result = "I couldn't find the shortest razstoqnie between these two.";
+            Result = "I couldn't find the shortest distance between these two.";
             return SearchedPath;
         }
 
@@ -454,8 +454,7 @@ namespace Building.BuildingUtils
                             AlreadyUsedLinks[tempLink.LinkType] += 1;
                         }
 
-                        Result += $" Path Details. \n\n" +
-                            $"{actualPath.ElementAt(0).Name}-> {type} (cost: {newCost}) -> {currentItem.Name}";
+                        Result += $" -> {type} (cost: {newCost}) -> {currentItem.Name} ";
 
                         if (currentItem.Name == t)
                         {

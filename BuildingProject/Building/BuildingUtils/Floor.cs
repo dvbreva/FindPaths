@@ -105,16 +105,16 @@ namespace Building.BuildingUtils
         // method to calculate the distance of 2 rooms' coordinates 
         public double CalculateDistance(string startRoomName, string finalRoomName)
         {
-            Room startRoom;
-            Room finalRoom;
 
             //gets the value with the associated key t.e dvata mi argumenta na metoda
-            Rooms.TryGetValue(startRoomName, out startRoom);
-            Rooms.TryGetValue(finalRoomName, out finalRoom);
+            Rooms.TryGetValue(startRoomName, out Room startRoom);
+            Rooms.TryGetValue(finalRoomName, out Room finalRoom);
 
             double currentDistance = 0;
 
-            // ako na startovata staq etaja ne e sushtiq kato na finalnata i e tranzitna i etaja ne e null
+            // ako na startovata staq etaja ne e sushtiq kato na finalnata i e tranzitna i etaja ne e null -> down 
+
+           // ako se namiram v staq na goren etaj a trqbva da stigna nqkakva staq koqto e dolu za da trugnesh nadolu i da izchistish opashkata ot staite ot gorniq etaj suotvetno 
             if(!startRoom.Floor.Equals(finalRoom.Floor) && startRoom.RoomType == "transit" && GetLinkedRooms(startRoom.Name).Find(x => x.Floor == finalRoom.Floor) != null)
             {
                 Room LinkedRoom = GetLinkedRooms(startRoom.Name).Find(x => x.Floor == finalRoom.Floor);
